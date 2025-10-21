@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from markdown import markdown
 
 # It's good practice to import instructions from a separate file
-from app.instructions import MAIN_INSTRUCTIONS, ROOT_INSTRUCTIONS, ROUTER_INSTRUCTIONS, SINGLE_ROOT_INSTRUCTIONS
+from app.instructions import ROOT_INSTRUCTIONS
 
 
 load_dotenv()
@@ -66,8 +66,6 @@ root_agent = LlmAgent(
     name='policy_navigator_agent',
     description="An AI agent to answer questions based on clinical guidelines, HR policies, or compliance documents.",
     instruction=ROOT_INSTRUCTIONS.strip(),
-    tools=[
-        policy_navigator_clinical_tool,
-    ],
+    tools=[policy_navigator_clinical_tool],
     generate_content_config=CONTENT_CONFIG,
 )
