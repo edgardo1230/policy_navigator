@@ -1,1 +1,6 @@
-google.genai.errors.ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Multiple tools are supported only when they are all search tools.', 'status': 'INVALID_ARGUMENT'}}
+adk deploy agent_engine \
+    --project="qwiklabs-gcp-01-f81085004973" \
+    --region="us-central1" \
+    
+    --staging_bucket="gs://policy-agent-engine-deploy" \
+    deployment
