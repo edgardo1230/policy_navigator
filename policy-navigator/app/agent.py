@@ -66,6 +66,6 @@ root_agent = LlmAgent(
     name='policy_navigator_agent',
     description="An AI agent to answer questions based on clinical guidelines, HR policies, or compliance documents.",
     instruction=ROOT_INSTRUCTIONS.strip(),
-    tools=[policy_navigator_clinical_tool],
+    tools=[policy_navigator_tool],
     generate_content_config=CONTENT_CONFIG,
 )
