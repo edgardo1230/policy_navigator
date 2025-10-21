@@ -10,6 +10,7 @@ from markdown import markdown
 # It's good practice to import instructions from a separate file
 from app.instructions import ROOT_INSTRUCTIONS, ROUTER_INSTRUCTIONS
 
+
 load_dotenv()
 
 # --- Configuration ---
@@ -29,6 +30,14 @@ COLLECTION_ID = os.getenv('COLLECTION_ID')
 POLICY_NAVIGATOR_COMPLIANCE_APP = os.getenv('POLICY_NAVIGATOR_COMPLIANCE_APP')
 POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP = os.getenv('POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP')
 POLICY_NAVIGATOR_HR_APP = os.getenv('POLICY_NAVIGATOR_HR_APP')
+
+# Debug: Print environment variables to verify they are loaded correctly
+print("DEBUG: LOCATION:", LOCATION)
+print("DEBUG: PROJECT_ID:", PROJECT_ID)
+print("DEBUG: COLLECTION_ID:", COLLECTION_ID)
+print("DEBUG: POLICY_NAVIGATOR_COMPLIANCE_APP:", POLICY_NAVIGATOR_COMPLIANCE_APP)
+print("DEBUG: POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP:", POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP)
+print("DEBUG: POLICY_NAVIGATOR_HR_APP:", POLICY_NAVIGATOR_HR_APP)
 
 # --- Engine & Tool Definitions ---
 
@@ -80,11 +89,16 @@ hr_agent = LlmAgent(
 
 # The ADK web server looks for an agent named `root_agent` by default.
 # We now use the sub_agents parameter for routing.
+def debug_response_hook(response, **kwargs):
+    print("DEBUG: Model response:", response)
+    print("DEBUG: Extra kwargs:", kwargs)
+    return response
+
 root_agent = LlmAgent(
     model=MODEL,
     name='policy_navigator_router',
     description="A router agent that categorizes user questions and directs them to the correct specialist agent.",
     instruction=ROUTER_INSTRUCTIONS.strip(),
-    sub_agents=[compliance_agent, clinical_agent, hr_agent],
     generate_content_config=CONTENT_CONFIG,
+    sub_agents=[compliance_agent, clinical_agent, hr_agent],
 )

@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug ADK Web Server",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/policy-navigator/.venv/bin/uv",
+      "args": [
+        "run", "adk", "web", ".", "--port", "8501", "--reload_agents"
+      ],
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/policy-navigator/app/.env",
+      "cwd": "${workspaceFolder}/policy-navigator"
+    }
+  ]
+}
