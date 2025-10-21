@@ -71,9 +71,9 @@ def deploy_agent_engine_app():
 
     GOOGLE_CLOUD_PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
     GOOGLE_CLOUD_LOCATION = os.environ["GOOGLE_CLOUD_LOCATION"]
-    STAGING_BUCKET = "gs://qwiklabs-gcp-00-11f32592afd9-hcls-agent-engine-deploy"
-    AGENT_DISPLAY_NAME = "Revenue Cycle Advisor"
-    AGENT_DESCRIPTION = "Review a denied claim and generate an appeal letter to contest the claim."
+    STAGING_BUCKET = "gs://policy-agent-engine-deploy"
+    AGENT_DISPLAY_NAME = "Policy Advisor"
+    AGENT_DESCRIPTION = "Agent designed to answer questions based on clinical guidelines, HR policies, or compliance documents."
   
     vertexai.init(
         project=GOOGLE_CLOUD_PROJECT,
