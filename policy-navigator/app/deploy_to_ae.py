@@ -3,6 +3,7 @@ import os
 from vertexai import agent_engines
 from dotenv import load_dotenv
 
+
 class App:
     def __init__(self):
         load_dotenv()
@@ -11,7 +12,9 @@ class App:
         self.LOCATION = os.environ["LOCATION"]
         self.PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
         self.COLLECTION_ID  = os.environ["COLLECTION_ID"]
-        self.CYMBAL_SEARCH_APP = os.environ["CYMBAL_SEARCH_APP"]       
+        self.POLICY_NAVIGATOR_COMPLIANCE_APP = os.environ["POLICY_NAVIGATOR_COMPLIANCE_APP"]       
+        self.POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP = os.environ["POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP"]       
+        self.POLICY_NAVIGATOR_HR_APP = os.environ["POLICY_NAVIGATOR_HR_APP"]       
 
     def set_up(self):
 
@@ -22,7 +25,9 @@ class App:
         os.environ["LOCATION"] = self.LOCATION
         os.environ["GOOGLE_CLOUD_PROJECT"] = self.GOOGLE_CLOUD_PROJECT
         os.environ["COLLECTION_ID"] = self.COLLECTION_ID
-        os.environ["CYMBAL_SEARCH_APP"] = self.CYMBAL_SEARCH_APP
+        os.environ["POLICY_NAVIGATOR_COMPLIANCE_APP"] = self.POLICY_NAVIGATOR_COMPLIANCE_APP
+        os.environ["POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP"] = self.POLICY_NAVIGATOR_CLINICAL_GUIDELINES_APP
+        os.environ["POLICY_NAVIGATOR_HR_APP"] = self.POLICY_NAVIGATOR_HR_APP
 
         from agent import root_agent
         ROOT_AGENT=root_agent # the name of the root agent in agent.py
@@ -90,7 +95,7 @@ def deploy_agent_engine_app():
         "description" : AGENT_DESCRIPTION,
         "requirements": "requirements.txt",
         "extra_packages": [
-            "agent.py",
+            "app/agent.py",
         ],
     }
 
