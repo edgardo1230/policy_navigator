@@ -1,0 +1,5 @@
+google-cloud-aiplatform[adk, agent_engines]
+asgiref==3.8.1
+cloudpickle==3.1.1
+bs4==0.0.2
+Markdown==3.8
