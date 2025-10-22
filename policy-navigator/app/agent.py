@@ -8,8 +8,7 @@ from bs4 import BeautifulSoup
 from markdown import markdown
 
 # It's good practice to import instructions from a separate file
-from .instructions import ROOT_INSTRUCTIONS
-
+from instructions import ROOT_INSTRUCTIONS
 
 load_dotenv()
 
