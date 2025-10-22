@@ -97,8 +97,8 @@ def deploy_agent_engine_app():
         "description" : AGENT_DESCRIPTION,
         "requirements": "requirements.txt",
         "extra_packages": [
-            "agent.py",
-            "instructions.py"
+            "app/agent.py",
+            "app/instructions.py"
         ],
     }
 
